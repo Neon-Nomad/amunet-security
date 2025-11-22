@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  control-plane:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://amunet:secure_password@postgres:5432/amunet_db
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - amunet-network
+
+  agent:
+    build: ./agent
+    depends_on:
+      - control-plane
+      - nats
+    networks:
+      - amunet-network
+
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=amunet
+      - POSTGRES_PASSWORD=secure_password
+      - POSTGRES_DB=amunet_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - amunet-network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - amunet-network
+
+  nats:
+    image: nats:latest
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+    networks:
+      - amunet-network
+
+networks:
+  amunet-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:

@@ -15,15 +15,17 @@
 
 ---
 
-## 🛑 Project Status: UI Demo
-
-**This repository currently contains a high-fidelity frontend prototype of the Amunet AI platform.**
-
-*   **FUNCTIONAL UI:** The React application is fully built out, showcasing the intended user experience, all major views, and interactive components.
-*   **SIMULATED BACKEND:** All data, metrics, and real-time events (like IP rotations or incoming attacks) are generated locally in your browser. There is **no production backend or agent** connected to this demo.
-*   **ROADMAP:** We are actively developing the production backend services (Go/Python) and infrastructure agents needed to bring the full vision to life. See the [ROADMAP.md](ROADMAP.md) for details.
-
-This demo serves as a detailed blueprint for the final product and a platform for user experience feedback.
+## 🚀 Project Status: Backend Implemented
+ 
+ **This repository contains the complete source code for the Amunet AI platform.**
+ 
+ *   **CORE BACKEND:** Python/FastAPI Control Plane with PostgreSQL and Redis.
+ *   **AGENT:** Go-based agent with MTD capabilities (IP Rotation, Port Shuffling).
+ *   **DECEPTION:** Honeypot Manager and Threat Intel Service.
+ *   **DEFENSE:** Automated Response Engine and SIEM Integration.
+ *   **FRONTEND:** React 18 Dashboard (Demo Mode available).
+ 
+ See the [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for the full architectural vision.
 
 ---
 
@@ -32,12 +34,12 @@ This demo serves as a detailed blueprint for the final product and a platform fo
 ### Command Center
 
 The central hub for monitoring threat probability, network traffic, and active nodes.
-![Command Center](https://placehold.co/1200x675/0B0F19/00F0FF?text=Command+Center+Dashboard&font=roboto)
+ ![Command Center](assets/dashboard.png)
 
 ### Moving Target Defense (MTD)
 
 Visualize the autonomous rotation of IP addresses and port mappings in real-time.
-![MTD Visualization](https://placehold.co/1200x675/0B0F19/FFC107?text=Moving+Target+Defense+Visualizer&font=roboto)
+ ![MTD Visualization](assets/mtd.png)
 
 ### Developer CLI (⌘K)
 
@@ -47,7 +49,7 @@ A power-user terminal for executing audits, deploying decoys, and running "Red T
 ### Defense Mode
 
 3D visualization of the entire fleet defense posture and active threat deflection.
-![Defense Mode](https://placehold.co/1200x675/05080f/00F0FF?text=Defense+Mode+3D+View&font=roboto)
+ ![Defense Mode](assets/defense.png)
 
 ---
 
